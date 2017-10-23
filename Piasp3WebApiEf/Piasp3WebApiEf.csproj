@@ -259,6 +259,18 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DAL\Common\EntityContext.cs" />
+    <Compile Include="DAL\Common\EntityWithId.cs" />
+    <Compile Include="DAL\Common\IEntityService.cs" />
+    <Compile Include="DAL\Models\Author.cs" />
+    <Compile Include="DAL\Models\Book.cs" />
+    <Compile Include="DAL\Common\Person.cs" />
+    <Compile Include="DAL\Models\BookReader.cs" />
+    <Compile Include="DAL\Models\Reader.cs" />
+    <Compile Include="DAL\Services\IAuthorService.cs" />
+    <Compile Include="DAL\Services\IBookReaderService.cs" />
+    <Compile Include="DAL\Services\IBookService.cs" />
+    <Compile Include="DAL\Services\IReaderService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -320,7 +332,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -338,7 +352,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
