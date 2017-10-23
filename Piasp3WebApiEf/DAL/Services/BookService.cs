@@ -20,6 +20,13 @@ namespace Piasp3WebApiEf.DAL.Services
             return Books.SingleOrDefault( x => x.Id == Id );
         }
 
+        public List<Book> GetAll()
+        {
+            return Books
+                .Distinct( new EqualityComparer() )
+                .ToList();
+        }
+
         public void Save( Book book )
         {
             var existBook = Get( book.Id );
@@ -32,6 +39,23 @@ namespace Piasp3WebApiEf.DAL.Services
                 Books.Add( book );
             }
             SaveChanges();
+        }
+
+        class EqualityComparer : IEqualityComparer<Book>
+        {
+            public bool Equals( Book x, Book y )
+            {
+                return x.AuthorId == y.AuthorId
+                    && x.Title == y.Title;
+            }
+
+            public int GetHashCode( Book obj )
+            {
+                unchecked
+                {
+                    return obj.AuthorId ^ obj.Title.GetHashCode();
+                }
+            }
         }
     }
 }

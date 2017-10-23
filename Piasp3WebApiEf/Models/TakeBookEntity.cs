@@ -14,8 +14,5 @@ namespace Piasp3WebApiEf.Models
 
         [DataMember( Name = "bookId" )]
         public int BookId { get; set; }
-
-        [DataMember( Name = "startDate")]
-        public DateTime StartDate { get; set; }
     }
 }

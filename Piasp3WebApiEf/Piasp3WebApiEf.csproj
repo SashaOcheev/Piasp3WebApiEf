@@ -257,9 +257,9 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibraryVisitController.cs" />
     <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DAL\Common\EntityContext.cs" />
     <Compile Include="DAL\Common\EntityWithId.cs" />
     <Compile Include="DAL\Common\IEntityService.cs" />
     <Compile Include="DAL\Models\Author.cs" />
@@ -280,12 +280,13 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BookDto.cs" />
+    <Compile Include="Models\BooksDto.cs" />
     <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IDetail.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Reader.cs" />
+    <Compile Include="Models\PersonDto.cs" />
+    <Compile Include="Models\ReaderDto.cs" />
     <Compile Include="Models\ReturnBookEntity.cs" />
     <Compile Include="Models\TakeBookEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -356,6 +357,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

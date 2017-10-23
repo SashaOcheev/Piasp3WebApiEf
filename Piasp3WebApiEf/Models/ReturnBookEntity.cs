@@ -9,7 +9,7 @@ namespace Piasp3WebApiEf.Models
     [DataContract]
     public class ReturnBookEntity : TakeBookEntity
     {
-        [DataMember( Name = "bookCardId" )]
-        public int BookCardId { get; set; }
+        [DataMember( Name = "SubscriptionId" )]
+        public int SubscriptionId { get; set; }
     }
 }

@@ -16,9 +16,22 @@ namespace Piasp3WebApiEf.DAL.Services
 
         public DbSet<Author> Authors { get; set; }
 
+        public List<Author> Get( List<int> ids )
+        {
+            return ( from a in Authors
+                     where ids.Contains( a.Id )
+                     select a )
+                   .ToList(); 
+        }
+
         public Author Get( int Id )
         {
             return Authors.SingleOrDefault( x => x.Id == Id );
+        }
+
+        public List<Author> GetAll()
+        {
+            return Authors.ToList();
         }
 
         public void Save( Author author )
