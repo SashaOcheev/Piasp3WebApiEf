@@ -1,5 +1,5 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Piasp3WebApiEf.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Piasp3WebApiEf.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod( typeof( Piasp3WebApiEf.App_Start.NinjectWebCommon ), "Start" )]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute( typeof( Piasp3WebApiEf.App_Start.NinjectWebCommon ), "Stop" )]
 
 namespace Piasp3WebApiEf.App_Start
 {
@@ -12,20 +12,20 @@ namespace Piasp3WebApiEf.App_Start
     using Ninject.Web.Common;
     using Models;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
-            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            DynamicModuleUtility.RegisterModule( typeof( OnePerRequestHttpModule ) );
+            DynamicModuleUtility.RegisterModule( typeof( NinjectHttpModule ) );
+            bootstrapper.Initialize( CreateKernel );
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -33,7 +33,7 @@ namespace Piasp3WebApiEf.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -43,10 +43,10 @@ namespace Piasp3WebApiEf.App_Start
             var kernel = new StandardKernel();
             try
             {
-                kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+                kernel.Bind<Func<IKernel>>().ToMethod( ctx => () => new Bootstrapper().Kernel );
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new Ninject.WebApi.DependencyResolver.NinjectDependencyResolver( kernel );
-                RegisterServices(kernel);
+                RegisterServices( kernel );
                 return kernel;
             }
             catch
@@ -60,10 +60,10 @@ namespace Piasp3WebApiEf.App_Start
         /// Load your modules or register your services here!
         /// </summary>
         /// <param name="kernel">The kernel.</param>
-        private static void RegisterServices(IKernel kernel)
+        private static void RegisterServices( IKernel kernel )
         {
             //
             kernel.Bind<IDetail>().To<Detail>();
-        }        
+        }
     }
 }
