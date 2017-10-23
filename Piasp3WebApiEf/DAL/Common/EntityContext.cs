@@ -12,7 +12,6 @@ namespace Piasp3WebApiEf.DAL.Common
             : base("DbConnection")
         { }
 
-
         public DbSet<TEntity> Entities { get; set; }
     }
 }

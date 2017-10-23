@@ -264,13 +264,17 @@
     <Compile Include="DAL\Common\IEntityService.cs" />
     <Compile Include="DAL\Models\Author.cs" />
     <Compile Include="DAL\Models\Book.cs" />
-    <Compile Include="DAL\Common\Person.cs" />
-    <Compile Include="DAL\Models\BookReader.cs" />
+    <Compile Include="DAL\Common\IPerson.cs" />
+    <Compile Include="DAL\Models\Subscription.cs" />
     <Compile Include="DAL\Models\Reader.cs" />
+    <Compile Include="DAL\Services\AuthorService.cs" />
+    <Compile Include="DAL\Services\BookService.cs" />
     <Compile Include="DAL\Services\IAuthorService.cs" />
-    <Compile Include="DAL\Services\IBookReaderService.cs" />
+    <Compile Include="DAL\Services\ISubscriptionService.cs" />
     <Compile Include="DAL\Services\IBookService.cs" />
     <Compile Include="DAL\Services\IReaderService.cs" />
+    <Compile Include="DAL\Services\ReaderService.cs" />
+    <Compile Include="DAL\Services\SubscriptionService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

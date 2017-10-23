@@ -11,6 +11,7 @@ namespace Piasp3WebApiEf.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Models;
+    using DAL.Services;
 
     public static class NinjectWebCommon
     {
@@ -64,6 +65,10 @@ namespace Piasp3WebApiEf.App_Start
         {
             //
             kernel.Bind<IDetail>().To<Detail>();
+            kernel.Bind<IAuthorService>().To<AuthorService>().InRequestScope();
+            kernel.Bind<ISubscriptionService>().To<SubscriptionService>().InRequestScope();
+            kernel.Bind<IReaderService>().To<ReaderService>().InRequestScope();
+            kernel.Bind<IBookService>().To<BookService>().InRequestScope();
         }
     }
 }
