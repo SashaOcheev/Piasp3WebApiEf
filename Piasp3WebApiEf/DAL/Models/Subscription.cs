@@ -13,13 +13,5 @@ namespace Piasp3WebApiEf.DAL.Models
         public int ReaderId { get; set; }
         public DateTime TakeDate { get; set; }
         public DateTime? ReturnDate { get; set; }
-
-        public bool WasReturn
-        {
-            get
-            {
-                return ReturnDate.HasValue; 
-            }
-        }
     }
 }

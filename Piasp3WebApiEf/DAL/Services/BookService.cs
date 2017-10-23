@@ -3,19 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Piasp3WebApiEf.DAL.Models;
+using System.Data.Entity;
 
 namespace Piasp3WebApiEf.DAL.Services
 {
-    public class BookService : IBookService
+    public class BookService : DbContext, IBookService
     {
+        public BookService()
+            : base( "DbConnection" )
+        { }
+
+        public DbSet<Book> Books { get; set; }
+
         public Book Get( int Id )
         {
-            throw new NotImplementedException();
+            return Books.SingleOrDefault( x => x.Id == Id );
         }
 
-        public void Save( Book author )
+        public void Save( Book book )
         {
-            throw new NotImplementedException();
+            var existBook = Get( book.Id );
+            if ( existBook != null )
+            {
+                existBook.Id = book.Id;
+            }
+            else
+            {
+                Books.Add( book );
+            }
+            SaveChanges();
         }
     }
 }

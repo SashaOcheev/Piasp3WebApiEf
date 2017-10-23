@@ -5,6 +5,5 @@ namespace Piasp3WebApiEf.DAL.Services
 {
     public interface ISubscriptionService : IEntityService<Subscription>
     {
-
     }
 }

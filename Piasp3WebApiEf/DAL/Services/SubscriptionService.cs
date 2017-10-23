@@ -3,19 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Piasp3WebApiEf.DAL.Models;
+using System.Data.Entity;
 
 namespace Piasp3WebApiEf.DAL.Services
 {
-    public class SubscriptionService : ISubscriptionService
+    public class SubscriptionService : DbContext, ISubscriptionService
     {
+        public SubscriptionService()
+            : base( "DbConnection" )
+        { }
+
+        public DbSet<Subscription> Subscriptions { get; set; }
+
         public Subscription Get( int Id )
         {
-            throw new NotImplementedException();
+            return Subscriptions.SingleOrDefault( x => x.Id == Id );
         }
 
-        public void Save( Subscription author )
+        public void Save( Subscription subscription )
         {
-            throw new NotImplementedException();
+            var existSubscription = Get( subscription.Id );
+            if ( existSubscription != null )
+            {
+                existSubscription.Id = subscription.Id;
+            }
+            else
+            {
+                Subscriptions.Add( subscription );
+            }
+            SaveChanges();
         }
     }
 }
