@@ -11,7 +11,7 @@ namespace Piasp3WebApiEf.DAL.Services
     public class AuthorService : DbContext, IAuthorService
     {
         public AuthorService()
-            :base("DbConnection")
+            :base( "DbConnection" )
         { }
 
         public DbSet<Author> Authors { get; set; }

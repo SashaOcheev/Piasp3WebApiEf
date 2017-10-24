@@ -16,15 +16,18 @@ namespace Piasp3WebApiEf.Controllers
         readonly IReaderService _readerService;
         readonly IBookService _booksService;
         readonly IAuthorService _authorService;
+        readonly ISubscriptionService _subscriptionService;
 
         public LibraryVisitController( 
             IReaderService readerService,
             IBookService bookService,
-            IAuthorService authorService )
+            IAuthorService authorService,
+            ISubscriptionService subscriptionService )
         {
             _readerService = readerService;
             _booksService = bookService;
             _authorService = authorService;
+            _subscriptionService = subscriptionService;
         }
 
         [HttpGet]
@@ -51,7 +54,7 @@ namespace Piasp3WebApiEf.Controllers
             {
                 Books = bookDtoList
             };
-
+            
             return Ok( response );
         }
 
