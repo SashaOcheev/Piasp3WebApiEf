@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 
 namespace Piasp3WebApiEf.Controllers
 {
+    [RoutePrefix( "api/LibraryVisit" )]
     public class LibraryVisitController : ApiController
     {
         readonly IReaderService _readerService;
@@ -18,7 +19,7 @@ namespace Piasp3WebApiEf.Controllers
         readonly IAuthorService _authorService;
         readonly ISubscriptionService _subscriptionService;
 
-        public LibraryVisitController( 
+        public LibraryVisitController(
             IReaderService readerService,
             IBookService bookService,
             IAuthorService authorService,
@@ -31,6 +32,51 @@ namespace Piasp3WebApiEf.Controllers
         }
 
         [HttpGet]
+        [Route( "TakeBook" )]
+        public IHttpActionResult TakeBook( int bookId, int readerId )
+        {
+            var subscription = new Subscription
+            {
+                BookId = bookId,
+                ReaderId = readerId,
+                TakeDate = DateTime.UtcNow,
+                ReturnDate = null
+            };
+
+            _subscriptionService.Save( subscription );
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route( "ReturnBook" )]
+        public IHttpActionResult ReturnBook( int subscriptionId )
+        {
+            var subscription = _subscriptionService.Get( subscriptionId );
+            subscription.ReturnDate = DateTime.UtcNow;
+
+            _subscriptionService.Save( subscription );
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route( "Enroll" )]
+        public IHttpActionResult Enroll( string firstName, string lastName )
+        {
+            var reader = new Reader
+            {
+                FirstName = firstName,
+                LastName = lastName
+            };
+
+            _readerService.Save( reader );
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route( "Choose" )]
         [ResponseType( typeof( BooksDto ) )]
         public IHttpActionResult Choose()
         {
@@ -54,7 +100,7 @@ namespace Piasp3WebApiEf.Controllers
             {
                 Books = bookDtoList
             };
-            
+
             return Ok( response );
         }
 

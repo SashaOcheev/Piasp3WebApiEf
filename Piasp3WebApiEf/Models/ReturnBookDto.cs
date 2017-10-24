@@ -7,7 +7,7 @@ using System.Web;
 namespace Piasp3WebApiEf.Models
 {
     [DataContract]
-    public class ReturnBookEntity : TakeBookEntity
+    public class ReturnBookDto : TakeBookDto
     {
         [DataMember( Name = "SubscriptionId" )]
         public int SubscriptionId { get; set; }
